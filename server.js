@@ -1,10 +1,20 @@
 const express = require('express');
+const fs = require('fs');
+const path = require('path');
 const socket = require('socket.io');
 
 const tasks = [];
 let counter = 0;
+const clientDir = path.join(__dirname, 'client/build');
 
 const app = express();
+
+if(fs.existsSync(clientDir)) {
+  app.use(express.static(clientDir));
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(clientDir, 'index.html'));
+  });
+}
 
 const server = app.listen(process.env.PORT || 8000, () => {
   console.log('Server is running...');

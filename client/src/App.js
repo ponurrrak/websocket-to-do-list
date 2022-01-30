@@ -52,7 +52,11 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    this.socket = io('http://localhost:8000');
+    if(window.location.origin === 'http://localhost:3000') {
+      this.socket = io('http://localhost:8000');
+    } else {
+      this.socket = io();
+    }
 
     this.socket.on('updateData', tasks => {
       this.updateData(tasks);
