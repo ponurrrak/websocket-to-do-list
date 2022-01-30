@@ -7,7 +7,8 @@
   "license": "MIT",
   "dependencies": {
     "express": "^4.17.2",
-    "socket.io": "2.2.0"
+    "socket.io": "2.2.0",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "nodemon": "^2.0.15",
@@ -15,7 +16,7 @@
   },
   "scripts": {
     "start": "nodemon server.js",
-    "build": "cd client && yarn install && yarn build && cd ..",    
+    "build": "cd client && yarn install && yarn build && cd ..",
     "start-prod": "run-s build start"
   }
 }

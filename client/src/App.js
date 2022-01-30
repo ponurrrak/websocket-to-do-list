@@ -10,21 +10,18 @@ class App extends React.Component {
 
   updateData(tasks) {
     this.setState({
-      ...this.state,
       tasks,
     });
   }
 
   addTask(task) {
     this.setState({
-      ...this.state,
       tasks: [...this.state.tasks, task],
     });
   }
 
   removeTask(taskId) {
     this.setState({
-      ...this.state,
       tasks: this.state.tasks.filter(item => (
         item.id !== taskId
       )),
@@ -33,7 +30,6 @@ class App extends React.Component {
 
   handleInputChange(newInputValue) {
     this.setState({
-      ...this.state,
       newTask: newInputValue,
     });
   }

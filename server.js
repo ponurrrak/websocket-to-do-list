@@ -2,9 +2,9 @@ const express = require('express');
 const fs = require('fs');
 const path = require('path');
 const socket = require('socket.io');
+const { v4: uuidv4 } = require('uuid');
 
 const tasks = [];
-let counter = 0;
 const clientDir = path.join(__dirname, 'client/build');
 
 const app = express();
@@ -27,7 +27,7 @@ io.on('connection', socket => {
 
   socket.on('addTask', taskText => {
     const task = {
-      id: counter++,
+      id: uuidv4(),
       text: taskText,
     };
     tasks.push(task);
